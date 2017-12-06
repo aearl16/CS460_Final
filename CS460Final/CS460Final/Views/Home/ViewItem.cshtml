@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CS460Final.Models.Item>
+
+@{
+    ViewBag.Title = "ViewItem";
+}
+
+<h2>ViewItem</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateItem")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Seller.SellerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seller.SellerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditItem", new { id=item.ItemID, sellerID = item.SellerID}) |
+            @Html.ActionLink("Details", "ItemDetails", new { id=item.ItemID }) |
+            @Html.ActionLink("Delete", "DeleteItem", new { id=item.ItemID })
+        </td>
+    </tr>
+}
+
+</table>
